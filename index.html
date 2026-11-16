@@ -87,7 +87,10 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            transition: background 0.2s, transform 0.2s;
+            transition: background 0.25s ease,
+                        border-color 0.25s ease,
+                        box-shadow 0.25s ease,
+                        transform 0.25s ease;
         }
 
         .social img {
@@ -99,8 +102,12 @@
 
         .social:hover,
         .social:focus-visible {
-            background: #c62838;
-            transform: translateY(-2px);
+            background: #302026;
+            border-color: #ff3045;
+            box-shadow:
+                0 0 12px rgba(255, 48, 69, 0.65),
+                0 0 25px rgba(255, 48, 69, 0.30);
+            transform: translateY(-3px);
         }
 
         footer {
