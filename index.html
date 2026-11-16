@@ -1,189 +1,194 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-        content="Web oficial de 1D4BAND. Pop rock en directo.">
-  <title>1D4BAND | Web oficial</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web oficial de 1D4BAND. Pop rock en directo.">
+    <title>1D4BAND | Web oficial</title>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap');
-    
-    * {
-      box-sizing: border-box;
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap');
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #101014;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    header {
-      width: 100%;
-      background: #000000;
-    }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #101014;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
 
-    .portada {
-      display: block;
-      width: 100%;
-      max-width: 1800px;
-      height: auto;
-      margin: 0 auto;
-    }
+        header {
+            width: 100%;
+            background: #000000;
+        }
 
-    main {
-      width: 100%;
-      max-width: 650px;
-      margin: 0 auto;
-      padding: 35px 20px 55px;
-    }
+        .portada {
+            display: block;
+            width: 100%;
+            max-width: 1800px;
+            height: auto;
+            margin: 0 auto;
+        }
 
-    h1 {
-      font-size: clamp(32px, 6vw, 48px);
-      margin: 0 0 12px;
-      letter-spacing: 3px;
-    }
+        main {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 35px 20px 55px;
+        }
 
-    .subtitulo {
-      color: #e63946;
-      font-size: 19px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      margin-bottom: 30px;
-    }
+        h1 {
+            font-size: clamp(32px, 6vw, 48px);
+            margin: 0 0 12px;
+            letter-spacing: 3px;
+        }
 
-    .descripcion {
-      color: #dddddd;
-      font-size: 18px;
-      line-height: 1.7;
-      margin-bottom: 35px;
-    }
+        .subtitulo {
+            color: #e63946;
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
 
-    .redes-titulo {
-      font-size: 22px;
-      margin-bottom: 20px;
-    }
+        .descripcion {
+            color: #dddddd;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
 
-    .social {
-      display: block;
-      width: 100%;
-      padding: 20px;
-      margin: 15px 0;
-      background: #25252d;
-      color: #ffffff;
-      border: 1px solid #555555;
-      border-radius: 12px;
-      text-decoration: none;
-      font-size: 20px;
-      font-family: 'Oswald', 'Arial Narrow', sans-serif;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: background 0.2s, transform 0.2s;
-    }
+        .redes-titulo {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
 
-    .social:hover,
-    .social:focus-visible {
-      background: #c62838;
-      transform: translateY(-2px);
-    }
+        .social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            width: 100%;
+            padding: 16px 20px;
+            margin: 15px 0;
+            background: #25252d;
+            color: #ffffff;
+            border: 1px solid #555555;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 20px;
+            font-family: 'Oswald', 'Arial Narrow', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: background 0.2s, transform 0.2s;
+        }
 
-    footer {
-      padding: 25px 15px;
-      border-top: 1px solid #333333;
-      color: #aaaaaa;
-      font-size: 14px;
-    }
+        .social img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
 
-    @media (max-width: 600px) {
-      main {
-        padding: 25px 18px 40px;
-      }
+        .social:hover,
+        .social:focus-visible {
+            background: #c62838;
+            transform: translateY(-2px);
+        }
 
-      .subtitulo {
-        font-size: 15px;
-        letter-spacing: 2px;
-      }
+        footer {
+            padding: 25px 15px;
+            border-top: 1px solid #333333;
+            color: #aaaaaa;
+            font-size: 14px;
+        }
 
-      .descripcion {
-        font-size: 16px;
-      }
+        @media (max-width: 600px) {
+            main {
+                padding: 25px 18px 40px;
+            }
 
-      .social {
-        padding: 18px;
-        font-size: 18px;
-      }
-    }
-  </style>
+            .subtitulo {
+                font-size: 15px;
+                letter-spacing: 2px;
+            }
+
+            .descripcion {
+                font-size: 16px;
+            }
+
+            .social {
+                padding: 15px;
+                font-size: 18px;
+                gap: 14px;
+            }
+
+            .social img {
+                width: 38px;
+                height: 38px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- PORTADA OFICIAL DE 1D4BAND -->
-  <header>
-    <img
-      class="portada"
-      src="portada-1d4band.png"
-      alt="1D4BAND en concierto">
-  </header>
+    <header>
+        <img class="portada"
+             src="portada-1d4band.png"
+             alt="1D4BAND en concierto">
+    </header>
 
-  <!-- PRESENTACION DE LA BANDA -->
-  <main>
+    <main>
+        <h1>1D4BAND</h1>
 
-    <h1>1D4BAND</h1>
+        <p class="subtitulo">POP ROCK EN DIRECTO</p>
 
-    <p class="subtitulo">
-      POP ROCK EN DIRECTO
-    </p>
+        <p class="descripcion">
+            Revivimos los grandes éxitos del pop rock
+            de los años 80, 90 y 2000.
+            Música en directo, energía y diversión.
+            ¡Síguenos y acompáñanos en nuestros conciertos!
+        </p>
 
-    <p class="descripcion">
-      Revivimos los grandes éxitos del pop rock
-      de los años 80, 90 y 2000.
-      Música en directo, energía y diversión.
-      ¡Síguenos y acompáñanos en nuestros conciertos!
-    </p>
+        <h2 class="redes-titulo">
+            SÍGUENOS EN NUESTRAS REDES
+        </h2>
 
-    <!-- REDES SOCIALES -->
-    <h2 class="redes-titulo">
-      SÍGUENOS EN NUESTRAS REDES
-    </h2>
+        <a class="social"
+           href="https://www.instagram.com/1d4band/"
+           target="_blank"
+           rel="noopener noreferrer">
+            <img src="instagram.png" alt="">
+            <span>INSTAGRAM</span>
+        </a>
 
-    <a
-      class="social"
-      href="https://www.instagram.com/1d4band/"
-      target="_blank"
-      rel="noopener noreferrer">
-      INSTAGRAM
-    </a>
+        <a class="social"
+           href="https://www.facebook.com/1d4band"
+           target="_blank"
+           rel="noopener noreferrer">
+            <img src="facebook.png" alt="">
+            <span>FACEBOOK</span>
+        </a>
 
-    <a
-      class="social"
-      href="https://www.facebook.com/1d4band"
-      target="_blank"
-      rel="noopener noreferrer">
-      FACEBOOK
-    </a>
+        <a class="social"
+           href="https://www.youtube.com/@1d4band"
+           target="_blank"
+           rel="noopener noreferrer">
+            <img src="youtube.png" alt="">
+            <span>YOUTUBE</span>
+        </a>
+    </main>
 
-    <a
-      class="social"
-      href="https://www.youtube.com/@1d4band"
-      target="_blank"
-      rel="noopener noreferrer">
-      YOUTUBE
-    </a>
-
-  </main>
-
-  <!-- PIE DE PAGINA -->
-  <footer>
-    1D4BAND · POP ROCK EN DIRECTO
-  </footer>
+    <footer>
+        1D4BAND · POP ROCK EN DIRECTO
+    </footer>
 
 </body>
 </html>
