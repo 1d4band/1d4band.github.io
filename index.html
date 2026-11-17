@@ -246,6 +246,87 @@
                 height: 48px;
             }
         }
+
+        /* CONTRATACIÓN Y CONTACTO */
+
+.seccion-contacto {
+  padding: 55px 20px 65px;
+  text-align: center;
+}
+
+.seccion-contacto h2 {
+  color: #ffffff;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.contacto-subtitulo {
+  color: #ff3045;
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.contacto-contenido {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 30px 25px;
+  background: #1b1b22;
+  border: 1px solid #34343d;
+  border-radius: 16px;
+}
+
+.contacto-contenido p {
+  color: #dddddd;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.contacto-botones {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.boton-contacto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  background: #25252d;
+  border: 1px solid #ff3045;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.boton-contacto:hover {
+  background: #ff3045;
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(255, 48, 69, 0.65);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+  .seccion-contacto h2 {
+    font-size: 25px;
+  }
+
+  .contacto-botones {
+    flex-direction: column;
+  }
+
+  .boton-contacto {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+        
     </style>
 </head>
 
@@ -311,7 +392,55 @@
                     Cargando próximos conciertos...
                 </p>
             </div>
-        </section>    
+        </section>
+
+        <!-- SEPARADOR LUMINOSO -->
+<div class="separador-luminoso"></div>
+
+<!-- CONTRATACIÓN Y CONTACTO -->
+<section class="seccion-contacto" id="contacto">
+
+  <h2>CONTRATACIÓN Y CONTACTO</h2>
+
+  <p class="contacto-subtitulo">
+    ¿Quieres disfrutar de 1D4BAND en tu próximo evento?
+  </p>
+
+  <div class="contacto-contenido">
+
+    <p>
+      Llevamos los grandes éxitos del pop rock de los años
+      80, 90 y 2000 a fiestas populares, festivales,
+      salas de conciertos y eventos privados.
+    </p>
+
+    <p>
+      Contacta con nosotros para consultar disponibilidad
+      y solicitar información sobre nuestras actuaciones.
+    </p>
+
+    <div class="contacto-botones">
+
+      <a
+        class="boton-contacto"
+        href="mailto:unodecuatro.oficial@gmail.com?subject=Contrataci%C3%B3n%201D4BAND">
+        ✉ SOLICITAR CONTRATACIÓN
+      </a>
+
+      <a
+        class="boton-contacto boton-whatsapp"
+        href="https://wa.me/34654332471?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20contratar%20a%201D4BAND."
+        target="_blank"
+        rel="noopener noreferrer">
+        ☎ CONTACTAR POR WHATSAPP
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+        
     </main>
 
     <footer>
