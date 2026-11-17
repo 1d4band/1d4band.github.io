@@ -204,7 +204,15 @@
 .datos-concierto p {
     color: #bbbbbb;
     margin: 5px 0;
-} 
+}
+
+.datos-concierto .nombre-evento {
+    color: #ff3045;
+    font-size: 17px;
+    font-weight: 700;
+    margin: 8px 0 12px;
+}
+        
         footer {
             padding: 25px 15px;
             border-top: 1px solid #333333;
@@ -383,6 +391,10 @@ async function cargarConciertos() {
             const titulo = document.createElement("h3");
             titulo.textContent = "1D4BAND EN DIRECTO";
 
+            const evento = document.createElement("p");
+            evento.className = "nombre-evento";
+            evento.textContent = c.evento || "";
+            
             const localidad = document.createElement("p");
             localidad.textContent = "📍 " + (c.localidad || "");
 
@@ -395,7 +407,7 @@ async function cargarConciertos() {
             const entrada = document.createElement("p");
             entrada.textContent = c.entrada || "";
 
-            datos.append(titulo, localidad, lugar, hora, entrada);
+            datos.append(titulo, evento, localidad, lugar, hora, entrada);
             tarjeta.append(bloqueFecha, datos);
             contenedor.appendChild(tarjeta);
         });
