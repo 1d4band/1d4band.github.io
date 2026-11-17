@@ -338,13 +338,126 @@
   white-space: nowrap;
   border: 0;
 }
+
+        /* MENÚ DE NAVEGACIÓN */
+
+.menu-navegacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 16px 25px;
+  background: #101014;
+  border-bottom: 2px solid #ff3045;
+  position: relative;
+  z-index: 100;
+}
+
+.menu-logo {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 2px;
+  position: absolute;
+  left: 25px;
+}
+
+.menu-enlaces {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.menu-enlaces a {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu-enlaces a:hover,
+.menu-logo:hover {
+  color: #ff3045;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid #ff3045;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 25px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+/* MENÚ PARA MÓVILES */
+
+@media (max-width: 700px) {
+  .menu-navegacion {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    min-height: 60px;
+  }
+
+  .menu-logo {
+    left: 25px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-enlaces {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .menu-enlaces.abierto {
+    display: flex;
+  }
+
+  .menu-enlaces a {
+    padding: 14px;
+    text-align: center;
+    border-top: 1px solid #34343d;
+  }
+}
         
     </style>
+    
 </head>
 
 <body>
 
-    <header>
+    <!-- MENÚ DE NAVEGACIÓN -->
+<nav class="menu-navegacion" aria-label="Navegación principal">
+
+  <a href="#inicio" class="menu-logo">1D4BAND</a>
+
+  <button class="menu-toggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="menu-enlaces">
+    ☰
+  </button>
+
+  <div class="menu-enlaces" id="menu-enlaces">
+    <a href="#inicio">INICIO</a>
+    <a href="#conciertos">CONCIERTOS</a>
+    <a href="#contacto">CONTACTO</a>
+  </div>
+
+</nav>
+    
+    <header id="inicio">
         <img class="portada"
              src="portada-1d4band.png"
              alt="1D4BAND en concierto">
@@ -561,6 +674,29 @@ async function cargarConciertos() {
 }
 
 cargarConciertos();
+</script>
+
+<script>
+  const botonMenu = document.querySelector(".menu-toggle");
+  const enlacesMenu = document.querySelector(".menu-enlaces");
+
+  botonMenu.addEventListener("click", () => {
+    const abierto = enlacesMenu.classList.toggle("abierto");
+
+    botonMenu.setAttribute("aria-expanded", abierto);
+    botonMenu.setAttribute(
+      "aria-label",
+      abierto ? "Cerrar menú" : "Abrir menú"
+    );
+  });
+
+  enlacesMenu.querySelectorAll("a").forEach(enlace => {
+    enlace.addEventListener("click", () => {
+      enlacesMenu.classList.remove("abierto");
+      botonMenu.setAttribute("aria-expanded", "false");
+      botonMenu.setAttribute("aria-label", "Abrir menú");
+    });
+  });
 </script>
     
 </body>
