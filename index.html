@@ -135,6 +135,76 @@
         transform: scaleX(1);
     }
 }
+       .seccion-conciertos {
+    width: 100%;
+    margin: 35px auto;
+    text-align: center;
+}
+
+.conciertos-subtitulo {
+    color: #bbbbbb;
+    font-size: 17px;
+    margin: 10px 0 25px;
+}
+
+#lista-conciertos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.conciertos-vacio {
+    background: #25252d;
+    border: 1px solid #555;
+    border-radius: 12px;
+    padding: 30px 20px;
+    color: #dddddd;
+}
+
+.tarjeta-concierto {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #25252d;
+    border: 1px solid #555;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+}
+
+.fecha-concierto {
+    min-width: 75px;
+    padding: 12px;
+    background: #431f29;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.fecha-concierto strong {
+    display: block;
+    color: #ff3045;
+    font-size: 30px;
+}
+
+.fecha-concierto span {
+    color: white;
+    font-size: 15px;
+}
+
+.datos-concierto {
+    flex: 1;
+    min-width: 0;
+}
+
+.datos-concierto h3 {
+    color: white;
+    margin: 0 0 8px;
+}
+
+.datos-concierto p {
+    color: #bbbbbb;
+    margin: 5px 0;
+} 
         footer {
             padding: 25px 15px;
             border-top: 1px solid #333333;
@@ -219,11 +289,126 @@
             <img src="youtube.png" alt="">
             <span>YOUTUBE</span>
         </a>
+        <div class="separador-luminoso" aria-hidden="true"></div>
+
+        <section id="conciertos" class="seccion-conciertos">
+            <h2 class="redes-titulo">PRÓXIMOS CONCIERTOS</h2>
+
+            <p class="conciertos-subtitulo">
+                ¡Nos vemos en directo!
+            </p>
+
+            <div id="lista-conciertos">
+                <p class="conciertos-vacio">
+                    Cargando próximos conciertos...
+                </p>
+            </div>
+        </section>    
     </main>
 
     <footer>
         1D4BAND · POP ROCK EN DIRECTO
     </footer>
 
+    <script>
+async function cargarConciertos() {
+    const contenedor = document.getElementById("lista-conciertos");
+
+    try {
+        const respuesta = await fetch("conciertos.json", {
+            cache: "no-store"
+        });
+
+        if (!respuesta.ok) {
+            throw new Error("No se pudo cargar conciertos.json");
+        }
+
+        const conciertos = await respuesta.json();
+
+        if (!Array.isArray(conciertos)) {
+            throw new Error("Formato de conciertos incorrecto");
+        }
+
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+
+        const proximos = conciertos
+            .filter(c => {
+                if (!/^\d{4}-\d{2}-\d{2}$/.test(c.fecha)) {
+                    return false;
+                }
+                const fecha = new Date(c.fecha + "T00:00:00");
+                return !isNaN(fecha.getTime()) && fecha >= hoy;
+            })
+            .sort((a, b) => a.fecha.localeCompare(b.fecha));
+
+        contenedor.replaceChildren();
+
+        if (proximos.length === 0) {
+            contenedor.innerHTML = `
+                <p class="conciertos-vacio">
+                    PRÓXIMAMENTE NUEVAS FECHAS
+                    <br>
+                    ¡Síguenos para conocer nuestros próximos conciertos!
+                </p>
+            `;
+            return;
+        }
+
+        const meses = [
+            "ENE", "FEB", "MAR", "ABR", "MAY", "JUN",
+            "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"
+        ];
+
+        proximos.forEach(c => {
+            const fecha = new Date(c.fecha + "T00:00:00");
+
+            const tarjeta = document.createElement("article");
+            tarjeta.className = "tarjeta-concierto";
+
+            const bloqueFecha = document.createElement("div");
+            bloqueFecha.className = "fecha-concierto";
+
+            const dia = document.createElement("strong");
+            dia.textContent = fecha.getDate();
+
+            const mes = document.createElement("span");
+            mes.textContent = meses[fecha.getMonth()];
+
+            bloqueFecha.append(dia, mes);
+
+            const datos = document.createElement("div");
+            datos.className = "datos-concierto";
+
+            const titulo = document.createElement("h3");
+            titulo.textContent = "1D4BAND EN DIRECTO";
+
+            const localidad = document.createElement("p");
+            localidad.textContent = "📍 " + (c.localidad || "");
+
+            const lugar = document.createElement("p");
+            lugar.textContent = "Lugar: " + (c.lugar || "Por confirmar");
+
+            const hora = document.createElement("p");
+            hora.textContent = "🕒 " + (c.hora || "Por confirmar");
+
+            const entrada = document.createElement("p");
+            entrada.textContent = c.entrada || "";
+
+            datos.append(titulo, localidad, lugar, hora, entrada);
+            tarjeta.append(bloqueFecha, datos);
+            contenedor.appendChild(tarjeta);
+        });
+
+    } catch (error) {
+        console.error(error);
+        contenedor.textContent =
+            "No se han podido cargar los conciertos. Inténtalo más tarde.";
+    }
+}
+
+cargarConciertos();
+</script>
+    
 </body>
 </html>
